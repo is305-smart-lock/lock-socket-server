@@ -1,0 +1,4 @@
+.env
+client*
+.idea
+__pycache__
