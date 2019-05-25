@@ -85,10 +85,17 @@ class LockHandler(BaseRequestHandler):
                     }
                 }).encode('utf-8'))
 
-                ret = json.loads(self.request.recv(8192))
+                receive = self.request.recv(8192)
+
+                print(receive)
+                if receive: ret = json.loads(receive)
+                else:
+                    lock_device_list.remove(self.hid)
+                    self.request.close()
+                    return {'success': False, 'message': 'Lock offline.'}
                 response = {'success': ret['success'], 'message': 'ok'}
             else:
-                response = {'success': False, 'message': 'Bad type'}
+                response = {'success': False, 'message': 'Bad type.'}
 
 
             ch.basic_publish(exchange='',

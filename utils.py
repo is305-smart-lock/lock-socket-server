@@ -16,7 +16,6 @@ class Client:
         self.s = socket(AF_INET, SOCK_STREAM)
         self.s.connect((server, port))
         self.send_message('handshake', self.hid)
-        time.sleep(10)
 
     def message_handler(self, message):
         if message['type'] == 'unlock':
