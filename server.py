@@ -79,7 +79,10 @@ class LockHandler(BaseRequestHandler):
 
             if type == 'unlock':
                 self.request.send(json.dumps({
-                    'type': 'unlock'
+                    'type': 'unlock',
+                    'data': {
+                        'user': json.loads(body)['data']['user']
+                    }
                 }).encode('utf-8'))
 
                 ret = json.loads(self.request.recv(8192))

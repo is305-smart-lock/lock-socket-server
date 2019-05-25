@@ -20,7 +20,7 @@ class Client:
 
     def message_handler(self, message):
         if message['type'] == 'unlock':
-            print('Unlock!')
+            print('Welcome, %s!' % message['data']['user'])
             self.s.send(json.dumps({
                 'success': True,
                 'message': 'ok'
