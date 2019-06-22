@@ -5,5 +5,5 @@ SmartLock Socket Server (Python)
 
 ## Run
 ```
-python main.py
+python server.py
 ```
